@@ -28,6 +28,7 @@ public class LabW2_1 {
                 b = Character.toString(la1[0]);//перевести первый символ сторого слова в строку
                 if (a.equals(b)) {//если последний и первый строки равны
                     System.out.println(s[t - 1]);//вывести первое слово
+                    System.out.println(s[t]);//вывести второе слово
                 }
             }
         }
