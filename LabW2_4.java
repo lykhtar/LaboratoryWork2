@@ -31,18 +31,25 @@ public class LabW2_4 {
             }
         }
     }
-    
-//метод для поиска слова и записи его в новый файл
-    private static void Find(String res) throws FileNotFoundException, IOException {
+    //метод для поиска слова и записи его в файл
+ private static void Find(String res) {
         if (res.equals(pat)) {
             File file = new File("z2.txt");
-            //проверяем, что если файл не существует то создаем его
-            if (!file.exists()) {
-                file.createNewFile();
+            try {
+                //проверяем, что если файл не существует то создаем его
+                if (!file.exists()) {
+                    file.createNewFile();
+                }
+                PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+                try {
+                    //записать слово в файл
+                    out.print(res + "\n");
+                } finally {
+                    out.close();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
-            //записать слово в файл
-            out.print(res + "\n");
         }
     }
 
